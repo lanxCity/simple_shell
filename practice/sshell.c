@@ -13,7 +13,6 @@ int main(int ac, char *av[])
 
 	input = NULL;
 	len = 0;
-
 	ac = 0;
 
 	prompt_disp();
