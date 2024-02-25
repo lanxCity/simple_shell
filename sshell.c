@@ -10,17 +10,20 @@ int main(int ac, char *av[])
 {
 	char *input;
 	size_t len;
+	char *sh_name = NULL;
 
-	input = NULL;
-	len = 0;
-	ac = 0;
+	sh_name = strdup(av[ac - ac]);
+	while (1)
+	{
+		input = NULL;
+		len = 0;
 
-	prompt_disp();
-	sh_input(&input, &len);
-	sh_execmd(&input, av[ac]);
-
-	/*Free memory allocated by getline*/
-	free(input);
+		prompt_disp();
+		sh_input(&input, &len);
+		/*sh_execmd(input, sh_name);*/
+		sh_cmdpath(&input, sh_name);
+		free(input);
+	}
 
 	return (0);
 }
