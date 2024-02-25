@@ -5,4 +5,5 @@
  */
 void sh_exit(void)
 {
+	exit(EXIT_SUCCESS);
 }

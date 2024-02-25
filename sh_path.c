@@ -28,6 +28,7 @@ char *concat_args(char *args, char *new_arg)
  * @new_cmd: user's initial path
  * @sh_name: name of the shell executable file
  * @cmd: a string of command enterred with args
+ * Return: 0 (failure) or 1 (success)
  */
 int check_current_dir(char *new_cmd, char *sh_name, char **cmd)
 {
@@ -45,6 +46,7 @@ int check_current_dir(char *new_cmd, char *sh_name, char **cmd)
  * @new_cmd: the command name e.g. ls
  * @args: a string of command args
  * @sh_name: name of the shell executable file
+ * Return: 0 (failure) or 1 (success)
  */
 int check_dir_in_path(char *new_cmd, char *args, char *sh_name)
 {
@@ -80,7 +82,6 @@ int check_dir_in_path(char *new_cmd, char *args, char *sh_name)
 				sh_execmd(cmd_path, sh_name);
 				free(path);
 				free(cmd_path);
-				/*exit(EXIT_SUCCESS);*/
 				return (1);
 			}
 			free(cmd_path);
@@ -119,6 +120,4 @@ void sh_cmdpath(char **cmd, char *sh_name)
 		is_executed = check_dir_in_path(new_cmd, args, sh_name);
 	if (!is_executed)
 		perror(sh_name);
-
-	return;
 }

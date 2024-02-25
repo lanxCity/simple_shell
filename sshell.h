@@ -18,7 +18,7 @@ char *concatenate_args(char *args, char *new_arg);
 int check_current_dir(char *new_cmd, char *sh_name, char **cmd);
 int check_dir_in_path(char *new_cmd, char *args, char *sh_name);
 void sh_cmdpath(char **cmd, char *sh_name);
-
+void sh_exit(void);
 
 
 

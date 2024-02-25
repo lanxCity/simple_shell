@@ -8,6 +8,8 @@
 void sh_input(char **input, size_t *len)
 {
 	ssize_t read;
+	/*int count = 0;*/
+	/*char *input_dup;*/
 
 	/*getline() returns either -1 or strlen (including "\n")*/
 	read = getline(input, len, stdin);
@@ -25,9 +27,28 @@ void sh_input(char **input, size_t *len)
 			exit(EXIT_FAILURE);
 		}
 	}
-	/**
-	 * strcspn returns the length of character(s)
-	 * before reaching the delimiter e.g '\n'
-	 */
+
+	/*input_dup = strdup(*input);
+	while ((count < read) && input_dup[count++] == " ")
+	{
+		if (count == read - 1)
+			return 0;
+	}*/
+
 	(*input)[strcspn(*input, "\n")] = '\0';
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

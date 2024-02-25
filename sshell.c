@@ -20,10 +20,16 @@ int main(int ac, char *av[])
 
 		prompt_disp();
 		sh_input(&input, &len);
+
+
+		if (strcmp(input, "exit") == 0)
+		{
+			free(input);
+			sh_exit();
+		}
 		/*sh_execmd(input, sh_name);*/
 		sh_cmdpath(&input, sh_name);
 		free(input);
 	}
-
 	return (0);
 }
