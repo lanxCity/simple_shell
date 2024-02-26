@@ -24,10 +24,14 @@ int main(int ac, char *av[])
 			free(input);
 			sh_exit();
 		}
-
-		if (is_input)
+		else if (strcmp(input, "env") == 0)
 		{
-			sh_cmdpath(&input, sh_name);
+			sh_env();
+		}
+		else
+		{
+			if (is_input)
+				sh_cmdpath(&input, sh_name);
 		}
 	}
 
