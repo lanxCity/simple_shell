@@ -8,28 +8,29 @@
  */
 int main(int ac, char *av[])
 {
-	char *input;
-	size_t len;
+	char *input = NULL;
+	size_t len = 0;
 	char *sh_name = NULL;
+	int is_input;
 
 	sh_name = strdup(av[ac - ac]);
 	while (1)
 	{
-		input = NULL;
-		len = 0;
-
 		prompt_disp();
-		sh_input(&input, &len);
-
+		is_input = sh_input(&input, &len);
 
 		if (strcmp(input, "exit") == 0)
 		{
 			free(input);
 			sh_exit();
 		}
-		/*sh_execmd(input, sh_name);*/
-		sh_cmdpath(&input, sh_name);
-		free(input);
+
+		if (is_input)
+		{
+			sh_cmdpath(&input, sh_name);
+		}
 	}
+
+	free(input);
 	return (0);
 }

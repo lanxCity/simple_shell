@@ -12,7 +12,7 @@
 /*Prototype Section*/
 void sh_printf(const char *msg);
 void prompt_disp(void);
-void sh_input(char **input, size_t *len);
+int sh_input(char **input, size_t *len);
 void sh_execmd(char *cmd, char *sh);
 char *concatenate_args(char *args, char *new_arg);
 int check_current_dir(char *new_cmd, char *sh_name, char **cmd);

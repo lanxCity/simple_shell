@@ -5,37 +5,50 @@
  * @input: user command unput
  * @len: length of the command inputted
  */
-void sh_input(char **input, size_t *len)
+int sh_input(char **input, size_t *len)
 {
 	ssize_t read;
-	/*int count = 0;*/
-	/*char *input_dup;*/
+	char *input_dup = NULL;
+	char *is_null;
 
 	/*getline() returns either -1 or strlen (including "\n")*/
 	read = getline(input, len, stdin);
 
-	if (read == -1)
+	if (read <= 1)
 	{
 		if (feof(stdin))
 		{
 			sh_printf("\n");
 			exit(EXIT_SUCCESS);
 		}
+		else if (read == 1 && *input[0] == '\n')
+		{
+			return (0);
+		
+		}
 		else
 		{
-			sh_printf("Command not found\n");
+			perror("Command not found");
 			exit(EXIT_FAILURE);
 		}
 	}
 
-	/*input_dup = strdup(*input);
-	while ((count < read) && input_dup[count++] == " ")
-	{
-		if (count == read - 1)
-			return 0;
-	}*/
-
 	(*input)[strcspn(*input, "\n")] = '\0';
+
+	/*If only spaces line are read*/
+	input_dup = strdup(*input);
+	is_null = strtok(input_dup, " \t\n");
+
+	while (strtok(NULL, " \t\n"));
+
+
+	if (is_null == NULL)
+	{
+		return (0);
+	}
+
+	return (1);
+
 }
 
 
