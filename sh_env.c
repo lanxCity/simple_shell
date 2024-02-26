@@ -5,18 +5,18 @@
  */
 void sh_env(void)
 {
-	char **env, *name, *value;
+	char **env, *env_name, *env_val;
 	/*Iterate through the environment variables and print them*/
 	for (env = environ; *env != NULL; env++)
 	{
-		name = strtok(*env, "=");
-		value = strtok(NULL, "=");
+		env_name = strtok(*env, "=");
+		env_val = strtok(NULL, "=");
 		/**/
-		if (name != NULL && value != NULL)
+		if (env_name != NULL && env_val != NULL)
 		{
-			sh_printf(name);
+			sh_printf(env_name);
 			sh_printf("=");
-			sh_printf(value);
+			sh_printf(env_val);
 		}
 		sh_printf("\n");
 	}
