@@ -4,5 +4,5 @@
  */
 void prompt_disp(void)
 {
-	sh_printf("($) ");
+	sh_printf("#cisfun$ ");
 }
