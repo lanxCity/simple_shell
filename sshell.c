@@ -18,21 +18,9 @@ int main(int ac, char *av[])
 	{
 		prompt_disp();
 		is_input = sh_input(&input, &len);
-
-		if (strcmp(input, "exit") == 0)
-		{
-			free(input);
-			sh_exit();
-		}
-		else if (strcmp(input, "env") == 0)
-		{
-			sh_env();
-		}
-		else
-		{
-			if (is_input)
-				sh_cmdpath(&input, sh_name);
-		}
+		/**/
+		if (is_input)
+			sh_execmd(input, sh_name);
 	}
 
 	free(input);
