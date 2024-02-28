@@ -15,7 +15,6 @@ void sh_execmd(char *cmd, char *sh_name)
 
 	cmd_tokens[0] = cmd;
 	cmd_tokens[1] = NULL;
-
 	if (pid == 0)
 	{
 		/*Ensure the last item is NULL*/

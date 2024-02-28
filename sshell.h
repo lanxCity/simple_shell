@@ -13,6 +13,6 @@
 void sh_printf(const char *msg);
 void prompt_disp(void);
 int sh_input(char **input, size_t *len);
-void sh_execmd(char *cmd, char *sh);
+void sh_execmd(char *cmd, char *sh_name);
 
 #endif

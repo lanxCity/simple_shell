@@ -9,7 +9,7 @@
 int sh_input(char **input, size_t *len)
 {
 	ssize_t read;
-	char *input_dup = NULL;
+	char *input_dup;
 	char *is_null;
 
 	/*getline() returns either -1 or strlen (including "\n")*/
@@ -19,7 +19,6 @@ int sh_input(char **input, size_t *len)
 	{
 		if (feof(stdin))
 		{
-			/*sh_printf("\n");*/
 			exit(EXIT_SUCCESS);
 		}
 		else if (read == 1 && *input[0] == '\n')
@@ -41,10 +40,9 @@ int sh_input(char **input, size_t *len)
 	while (strtok(NULL, " \t\n"))
 		continue;
 
-	if (is_null == NULL)
-		return (0);
+	free(input_dup);
 
-	return (1);
+	return ((is_null == NULL) ? 0 : 1);
 
 }
 
