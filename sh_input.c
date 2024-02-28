@@ -19,7 +19,7 @@ int sh_input(char **input, size_t *len)
 	{
 		if (feof(stdin))
 		{
-			sh_printf("\n");
+			/*sh_printf("\n");*/
 			exit(EXIT_SUCCESS);
 		}
 		else if (read == 1 && *input[0] == '\n')
