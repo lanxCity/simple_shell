@@ -3,9 +3,9 @@
 /**
  * sh_execmd - A function that execute commands
  * @cmd: Command
- * @sh_name: The name of the shell xcutable file
+ * sh_name The name of the shell xcutable file
  */
-void sh_execmd(char *cmd, char *sh_name)
+void sh_execmd(char *cmd)
 {
 	pid_t pid;
 	char *cmd_tokens[2];
@@ -19,7 +19,7 @@ void sh_execmd(char *cmd, char *sh_name)
 	{
 		/*Ensure the last item is NULL*/
 		execve(cmd, cmd_tokens, env_paths);
-		perror(sh_name);
+		perror("./shell");
 		exit(EXIT_FAILURE);
 	}
 	else if (pid > 0)
